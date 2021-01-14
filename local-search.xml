@@ -4,13 +4,25 @@
   
   
   <entry>
-    <title>The First blog</title>
-    <link href="/2021/01/13/The-First-blog/"/>
-    <url>/2021/01/13/The-First-blog/</url>
+    <title>CLion找不到头文件解决方案</title>
+    <link href="/2021/01/14/CLion%E6%89%BE%E4%B8%8D%E5%88%B0%E5%A4%B4%E6%96%87%E4%BB%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <url>/2021/01/14/CLion%E6%89%BE%E4%B8%8D%E5%88%B0%E5%A4%B4%E6%96%87%E4%BB%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p>这两天我的air换了硬盘，使用时间机器恢复，出现五国问题，被迫重装系统，结果发现CLion找不到头文件了，所有的头文件下面都有红色波浪形标错，找了两种方法，我在下面列一下：</p><ol><li><p>终端加入这一行代码，安装命令行编译器</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">xcode-select --install<br></code></pre></td></tr></table></figure><p>这个方法应该是适用于mac系统升级后出现的问题，我没有成功。</p></li><li><p>在 CMakeList.txt 里添加一行</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">include_directories(SYSTEM <span class="hljs-string">&quot;/foo/bar&quot;</span>)<br></code></pre></td></tr></table></figure><p>之后右上角出现Reload changes和 Enable Auto-Reload，选择第二个，保存之后将这行注释掉即可。我是使用这个方法成功的。这个方法是添加头文件目录，它相当于g++选项中的-I参数的作用，也相当于环境变量中增加路径到CPLUS_INCLUDE_PATH变量的作用。</p></li></ol><p>更新：我突然发现一个特别好的链接！<a href="https://blog.csdn.net/superSmart_Dong/article/details/98982679">https://blog.csdn.net/superSmart_Dong/article/details/98982679</a></p><p>参考博客：</p><p><a href="https://blog.csdn.net/chenjun15/article/details/89305462">https://blog.csdn.net/chenjun15/article/details/89305462</a><br><a href="https://segmentfault.com/a/1190000018045211?utm_source=tag-newest">https://segmentfault.com/a/1190000018045211?utm_source=tag-newest</a><br><a href="https://www.cnblogs.com/binbinjx/p/5626916.html">https://www.cnblogs.com/binbinjx/p/5626916.html</a></p>]]></content>
     
     
+    <categories>
+      
+      <category>其他</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CLion</tag>
+      
+    </tags>
     
   </entry>
   
