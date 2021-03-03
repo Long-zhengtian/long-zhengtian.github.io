@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Hello World - Tianzl的博客</title>
+  <title>为什么等价无穷小不能在加减法中使用 - Tianzl的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -174,7 +174,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hello World">
+            <span class="h2" id="subtitle" title="为什么等价无穷小不能在加减法中使用">
               
             </span>
 
@@ -184,8 +184,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-01-13 12:40" pubdate>
-        2021年1月13日 下午
+      <time datetime="2021-03-03 16:19" pubdate>
+        2021年3月3日 下午
       </time>
     </span>
   
@@ -196,7 +196,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      75 字
+      640 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      8
        分钟
     </span>
   
@@ -236,24 +236,47 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">为什么等价无穷小不能在加减法中使用</h1>
             
             <div class="markdown-body">
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+              <p>首先明确一点，<strong>这句话是并不是完全正确的</strong>，所谓不能在加减法中使用，只是因为在加减法中比较容易出错，而乘除法中不会出错，所以我们应该尽量做到不在加减法中使用等价无穷小的替换。</p>
+<h3 id="为什么加减法不行"><a href="#为什么加减法不行" class="headerlink" title="为什么加减法不行"></a>为什么加减法不行</h3><p>看这样一道题使用等价无穷小解：</p>
+<script type="math/tex; mode=display">
+\lim_{x\rightarrow0}\frac{x-\sin x}{x^3}\xlongequal{x\rightarrow 0,x\sim\sin x}\lim_{x\rightarrow0}\frac{x-x}{x^3}=\lim_{x\rightarrow0}\frac{0}{x^3}=0</script><p>这个结果明显是错误的，我们使用洛必达得到正解：</p>
+<script type="math/tex; mode=display">
+\lim_{x\rightarrow0}\frac{x-\sin x}{x^3}\xlongequal{\frac00}\lim_{x\rightarrow0}\frac{1-\cos x}{3x^2}\xlongequal{\frac00}\lim_{x\rightarrow0}\frac{\sin x}{6x}\xlongequal{\frac00}\lim_{x\rightarrow0}\frac{\cos x}{6}=\frac16</script><p>那为什么会发生错误？原因是等价无穷小的本质是泰勒展开，在这道题中，<strong>佩亚诺余项对结果产生了影响</strong>。</p>
+<p>对此题如果将$\sin x$展开到第一项后，是这样的：</p>
+<script type="math/tex; mode=display">
+\lim_{x\rightarrow0}\frac{x-\sin x}{x^3}=\lim_{x\rightarrow0}\frac{x-x+o(x)}{x^3}=\lim_{x\rightarrow0}\frac{o(x)}{x^3}</script><p>这里的佩亚诺余项$o(x)$是$x$的高阶无穷小，但是无法和$x^3$进行比较，因此到这里就无法计算了。而如果将$\sin x$展开到第二项就可以得到正确结果：</p>
+<script type="math/tex; mode=display">
+\lim_{x\rightarrow0}\frac{x-\sin x}{x^3}=\lim_{x\rightarrow0}\frac{x-x+\frac16x^3+o(x^3)}{x^3}=\lim_{x\rightarrow0}\frac{\frac16x^3+o(x^3)}{x^3}=\frac16</script><script type="math/tex; mode=display">
+\text{其中}o(x^3)\text{是}x^3\text{的高阶无穷小，因此}\lim_{x\rightarrow0}\frac{o(x^3)}{x^3}=0</script><p>这就是使用泰勒展开的“上下同阶”原则。如果这道题的分母是$x$，那么使用等价无穷小得到结果为0就是正确的。</p>
+<p>到这里，我们解释了加减法使用等价无穷小有时正确有时错误的原因，下面看看为什么乘除法使用等价无穷小不会出错。</p>
+<h3 id="为什么乘除法可以"><a href="#为什么乘除法可以" class="headerlink" title="为什么乘除法可以"></a>为什么乘除法可以</h3><p>等价无穷小替换的过程实际可以看作是这样的：</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\lim_{x\rightarrow0}\frac{x-\sin x}{x\sin x}&=(\lim_{x\rightarrow0}\frac{x-\sin x}{x\sin x})\cdot1=\lim_{x\rightarrow0}\frac{x-\sin x}{x\sin x}\cdot\lim_{x\rightarrow0}\frac{\sin x}{x}\\&=\lim_{x\rightarrow0}(\frac{x-\sin x}{x\sin x}\cdot\frac{\sin x}{x})=\lim_{x\rightarrow0}\frac{x-\sin x}{x^2}=\cdots
+\end{align*}</script><p>这是一个抵消的过程，原式分母和极限为0的分式的分子约分，完成替换。因此乘除法是不会出错的。</p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AD%89%E4%BB%B7%E6%97%A0%E7%A9%B7%E5%B0%8F/">等价无穷小</a>
+                    
+                  </div>
                 
               </div>
               
@@ -264,15 +287,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/01/14/CLion%E6%89%BE%E4%B8%8D%E5%88%B0%E5%A4%B4%E6%96%87%E4%BB%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CLion找不到头文件解决方案</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2021/01/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1-Socket%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1(C++,%20MacOS)/">
+                        <span class="hidden-mobile">计算机网络课程设计-Socket网络通信(C++, MacOS)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
